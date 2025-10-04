@@ -26,6 +26,10 @@
           รหัสผ่านไม่ตรงกัน
         </div>
 
+        <!-- Profile Image -->
+        <label>Profile Image</label>
+        <input type="file" (change)="onFileChange($event)">
+
         <!-- Submit Button -->
         <button type="submit" class="register-btn" [disabled]="registerForm.invalid">
           สมัครสมาชิก

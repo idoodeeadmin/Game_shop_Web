@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
+  selectedFile: File | null = null;
   apiUrl = 'http://localhost:3000/register';
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {}
@@ -31,6 +32,13 @@ export class RegisterComponent implements OnInit {
       ? null : { passwordMismatch: true };
   }
 
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+    }
+  }
+
   onSubmit(): void {
     if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched();
@@ -38,13 +46,22 @@ export class RegisterComponent implements OnInit {
     }
 
     const { name, email, password } = this.registerForm.value;
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('password', password);
 
-    this.http.post(this.apiUrl, { name, email, password }, { withCredentials: true })
+    if (this.selectedFile) {
+      formData.append('profile_image', this.selectedFile);
+    }
+
+    this.http.post(this.apiUrl, formData, { withCredentials: true })
       .subscribe({
         next: () => {
           alert('สมัครสมาชิกเรียบร้อยแล้ว 🎉');
           this.registerForm.reset();
-          this.router.navigate(['/login']); // redirect ไปหน้า login
+          this.selectedFile = null;
+          this.router.navigate(['/login']);
         },
         error: (err) => {
           alert(err.error?.message || 'เกิดข้อผิดพลาด ❌');
