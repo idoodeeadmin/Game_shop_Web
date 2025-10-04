@@ -1,0 +1,47 @@
+<div class="navbar">
+  <div class="logo">
+    <img src="../../assets/logogo.png" alt="logo" />
+    <div class="logo-text">
+      <span class="title">Game Shop</span>
+      <span class="subtitle" *ngIf="isLoggedIn">{{ role | uppercase }}</span>
+    </div>
+  </div>
+
+  <div class="menu">
+    
+    <ng-container *ngIf="!isLoggedIn">
+      <button class="btn" routerLink="/register">สมัครสมาชิก</button>
+      <button class="btn" routerLink="/login">เข้าสู่ระบบ</button>
+    </ng-container>
+
+    <ng-container *ngIf="isLoggedIn">
+
+      <button class="btn btn-icon-label" routerLink="/shop">
+          <i class="fas fa-store"></i> 
+          ร้านค้า
+      </button>
+
+      <button class="btn btn-icon-label" routerLink="/inventory">
+          <i class="fas fa-box-open"></i> 
+          สินค้าคงคลัง
+      </button>
+
+      <button class="btn btn-icon-label" routerLink="/profile">
+          <i class="fas fa-user-circle"></i> 
+          โปรไฟล์
+      </button>
+      
+      <div class="icon-group highlight-box">
+          <button routerLink="/cart">
+              <span >0.00</span> 
+          </button>
+          <button routerLink="/notifications">
+          </button>
+      </div>
+
+      <button class="btn btn-logout" (click)="authService.logout()">ออกจากระบบ</button>
+
+    </ng-container>
+    
+  </div>
+</div>

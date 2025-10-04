@@ -1,0 +1,45 @@
+/* กล่อง Login ให้อยู่กลางจอ */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* เต็มหน้าจอ */
+  color: white;
+}
+
+/* หัวข้อ */
+.login-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  letter-spacing: 3px;
+}
+
+/* ช่องกรอก */
+.login-container input {
+  width: 250px;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  font-size: 14px;
+}
+
+/* ปุ่ม */
+.login-btn {
+  margin-top: 15px;
+  margin-left: 170px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 20px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.login-btn:hover {
+  background: #ddd;
+}

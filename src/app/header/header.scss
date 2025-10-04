@@ -1,0 +1,124 @@
+/* โค้ดเดิม ไม่ต้องแก้ไข */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  border-bottom: 1px solid purple;
+  background: black;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+}
+
+/* 👇 เพิ่ม CSS ส่วนนี้เข้ามา */
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #4f46e5; /* ฟ้าอมม่วง */
+}
+
+/* 👇 แก้ไข CSS ส่วนนี้ */
+.subtitle {
+  /* margin-left: 8px;  เอาบรรทัดนี้ออก */
+  font-size: 12px;
+  color: #8b5cf6; /* ม่วง */
+}
+
+.menu .btn {
+  margin-left: 10px;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* ระยะห่างระหว่างปุ่มหลักๆ */
+}
+
+/* 🔑 สไตล์ปุ่มที่มี Icon + Label (ร้านค้า, สินค้าคงคลัง, โปรไฟล์) */
+.btn-icon-label {
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 12px;
+    padding: 6px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* ระยะห่างระหว่างไอคอนกับข้อความ */
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap; /* ป้องกันข้อความขึ้นบรรทัดใหม่ */
+}
+
+.btn-icon-label i {
+    font-size: 16px;
+}
+
+/* 🔑 กลุ่มปุ่มไอคอนที่มีกรอบไฮไลท์สีเหลือง */
+.icon-group {
+    display: flex;
+    border: 2px solid #ffeb3b; /* ใช้สีเหลืองที่ชัดเจน */
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden; 
+}
+
+/* 🔑 สไตล์สำหรับปุ่มไอคอนล้วน ๆ (ตะกร้า, กล่องของขวัญ) */
+.btn-icon-only {
+    background: black;
+    color: white;
+    border: none;
+    padding: 10px 12px; /* เพิ่ม padding ให้ปุ่มสูงขึ้น */
+    cursor: pointer;
+    font-size: 16px;
+    position: relative; /* สำหรับตำแหน่งของ cart-count */
+}
+
+/* 🔑 เส้นแบ่งระหว่างปุ่มในกลุ่ม highlight-box */
+.icon-group .btn-icon-only:first-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.15); 
+}
+
+/* 🔑 สไตล์สำหรับตัวเลข (0) บนตะกร้าสินค้า */
+.cart-count {
+    position: absolute;
+    top: 5px; /* ปรับตำแหน่ง */
+    right: 5px; /* ปรับตำแหน่ง */
+    background: none; /* ในรูปไม่มี background สีแดง */
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0;
+    line-height: 1;
+}
+
+
+/* 🔑 สไตล์ปุ่มออกจากระบบ (กรอบดำ) */
+.btn-logout {
+    background: black !important;
+    color: white;
+    border: 1px solid white;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}

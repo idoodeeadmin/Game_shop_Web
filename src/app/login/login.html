@@ -1,0 +1,15 @@
+<div class="login-container">
+  <h2>Login</h2>
+
+  <!-- Email -->
+  <input type="email" placeholder="Email.." [(ngModel)]="email">
+
+  <!-- Password -->
+  <input type="password" placeholder="Password.." [(ngModel)]="password">
+
+  <!-- Error message -->
+  <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <!-- Login button -->
+  <button class="login-btn" (click)="login()">เข้าสู่ระบบ</button>
+</div>

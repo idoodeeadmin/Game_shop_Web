@@ -1,0 +1,167 @@
+@use "sass:color"; 
+
+// ตัวแปรสี
+$color-dark-bg: #000;
+$color-primary-text: #fff;
+$color-logo-yellow: #ffcc00;
+$color-accent-purple: #9333ea; 
+$input-width: 250px; // กำหนดความกว้างของ Input ตามตัวอย่าง Login
+
+// ------------------------------------
+// 1. Page & Header (เหมือนเดิม)
+// ------------------------------------
+.register-page {
+  background-color: $color-dark-bg;
+  color: $color-primary-text;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  .logo-img { width: 30px; margin-right: 10px; }
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    .shop-name { font-size: 1.5rem; font-weight: bold; color: $color-logo-yellow; }
+    .user-status { font-size: 0.7rem; color: $color-accent-purple; margin-top: -5px; }
+  }
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+  .btn {
+    padding: 8px 15px;
+    border: 1px solid $color-primary-text;
+    border-radius: 0; 
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .btn-secondary { 
+    background-color: transparent;
+    color: $color-primary-text;
+    border-color: $color-primary-text;
+    &:hover { background-color: rgba(255, 255, 255, 0.1); }
+  }
+  .btn-primary { 
+    background-color: $color-primary-text;
+    color: $color-dark-bg;
+    border-color: $color-primary-text;
+    &:hover { background-color: #ccc; }
+  }
+}
+
+// ------------------------------------
+// 2. Register Form Layout (ปรับตาม Login)
+// ------------------------------------
+.register-container {
+  // ใช้ Flexbox เพื่อจัดฟอร์มให้อยู่กลางจอ (ตาม .login-container)
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh; /* เต็มหน้าจอ */
+  
+  // ยกเลิก flex-grow: 1 ในกรณีที่กำหนดใน .register-page (แต่ในโค้ดนี้เราจัดการด้วย height: 100vh แล้ว)
+  // ให้ฟอร์มการ์ดอยู่ตรงกลาง
+}
+
+.register-card {
+  width: auto; // ปรับให้ขนาดฟอร์มขึ้นอยู่กับ Input
+  max-width: none;
+  padding: 20px;
+  text-align: center;
+  background-color: $color-dark-bg;
+}
+
+.register-title {
+  font-size: 2.5rem;
+  font-weight: normal;
+  margin-bottom: 40px;
+  letter-spacing: 3px; // ปรับเป็น 3px ตาม h2 ของ Login
+  color: $color-primary-text;
+}
+
+// พื้นที่กรอบสแกน
+.profile-scan-area {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 30px;
+  position: relative;
+}
+
+.crosshairs {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed $color-primary-text; 
+  position: relative;
+  
+  .center-plus {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%, -50%);
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      background-color: $color-primary-text;
+    }
+    &::before { width: 100%; height: 2px; top: 9px; }
+    &::after { width: 2px; height: 100%; left: 9px; }
+  }
+}
+
+// Input Fields (ปรับตาม Login)
+.form-layout {
+  // ทำให้ inputs อยู่ตรงกลางของ .register-card
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  input {
+    // ปรับสไตล์ Input ตามตัวอย่าง Login
+    width: 250px;
+    height: 25px;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    
+    // ดีไซน์จากรูป: Input พื้นหลังสีขาว ข้อความสีดำ
+    background-color: $color-primary-text;
+    color: $color-dark-bg; 
+    
+    &::placeholder {
+        color: #777;
+    }
+    &:focus {
+      outline: 2px solid $color-accent-purple; 
+    }
+  }
+}
+
+// ปุ่มลงทะเบียน (ปรับตาม Login)
+.register-btn {
+  // สไตล์ปุ่มตาม Login
+  margin-top: 15px;
+  margin-left: 170px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 20px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.register-btn:hover {
+  background: #ddd; // Hover effect ตาม Login
+}
