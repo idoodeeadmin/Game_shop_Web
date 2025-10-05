@@ -1,5 +1,5 @@
 <div class="login-container">
-  <h2>Login</h2>
+  <h3>Login</h3>
 
   <!-- Email -->
   <input type="email" placeholder="Email.." [(ngModel)]="email">
@@ -10,6 +10,11 @@
   <!-- Error message -->
   <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
 
-  <!-- Login button -->
-  <button class="login-btn" (click)="login()">เข้าสู่ระบบ</button>
+
+  <!-- ยังไม่มีบัญชี -->
+  <div class="no-account">
+    <span>ยังไม่มีบัญชี?</span>
+    <a (click)="goToRegister()"class="register-link">สมัครสมาชิก</a>
+      <button class="login-btn" (click)="login()">เข้าสู่ระบบ</button>
+  </div>
 </div>

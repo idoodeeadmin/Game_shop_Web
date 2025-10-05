@@ -4,7 +4,11 @@
       <h1 class="register-title">Register</h1>
 
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-layout" novalidate>
-        <!-- Name -->
+<label class="profile-upload">
+  <img [src]="previewUrl || '../../assets/icon_upload.svg'" alt="Profile Image" class="profile-img">
+  <input type="file" (change)="onFileChange($event)" hidden>
+</label>
+
         <input type="text" placeholder="Name" formControlName="name">
         <div class="error" *ngIf="f['name'].touched && f['name'].invalid">กรุณากรอกชื่อ</div>
 
@@ -26,11 +30,10 @@
           รหัสผ่านไม่ตรงกัน
         </div>
 
-        <!-- Profile Image -->
-        <label>Profile Image</label>
-        <input type="file" (change)="onFileChange($event)">
+
 
         <!-- Submit Button -->
+         
         <button type="submit" class="register-btn" [disabled]="registerForm.invalid">
           สมัครสมาชิก
         </button>

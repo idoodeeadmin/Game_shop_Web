@@ -21,7 +21,7 @@ export class Login {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private authService: AuthService // ✅ เพิ่มตรงนี้
+    private authService: AuthService 
   ) {}
 
   login() {
@@ -32,18 +32,21 @@ export class Login {
 this.http.post<any>(this.apiUrl, { email: this.email, password: this.password }, { withCredentials: true })
   .subscribe({
     next: res => {
-      alert('เข้าสู่ระบบสำเร็จ 🎉');
+      alert('เข้าสู่ระบบสำเร็จ ');
       
-      // 🔑 ส่ง role ให้ AuthService
+      //  ส่ง role ให้ AuthService
       const userRole: 'user' | 'admin' = res.role || 'user';
       this.authService.login(userRole);
 
       this.router.navigate(['/home']);
     },
     error: err => {
-      this.errorMessage = err.error?.message || 'เกิดข้อผิดพลาด ❌';
+      this.errorMessage = err.error?.message || 'เกิดข้อผิดพลาด ';
     }
   });
 
+  }
+    goToRegister() {
+    this.router.navigate(['/register']);
   }
 }

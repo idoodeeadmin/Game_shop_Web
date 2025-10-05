@@ -1,0 +1,73 @@
+<div class="profile-page">
+  <!-- Wallet Section -->
+  <div class="wallet-section">
+    <div class="profile-picture-wrapper">
+      <img
+        [src]="user.profile_image ? user.profile_image : 'assets/default-profile.png'"
+        alt="User Profile"
+        class="profile-picture"
+      />
+    </div>
+
+    <button class="edit-btn" (click)="openEditModal()">แก้ไขข้อมูล</button>
+
+    <div class="wallet-balance">
+      <p>ยอดเงินใน Wallet</p>
+      <span>{{ user.walletBalance | number: '1.2-2' }}$</span>
+    </div>
+
+  
+  </div>
+
+  <!-- Transaction History -->
+  <div class="transaction-section">
+    <h2>ประวัติการทำรายการ</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>วันที่</th>
+          <th>รายการ</th>
+          <th>จำนวนเงิน</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tx of transactions">
+          <td>{{ tx.date }}</td>
+          <td [ngClass]="{ positive: tx.amount > 0, negative: tx.amount < 0 }">
+            {{ tx.item }}
+          </td>
+          <td [ngClass]="{ positive: tx.amount > 0, negative: tx.amount < 0 }">
+            {{ tx.amount > 0 ? '+' : '' }}{{ tx.amount }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal Edit Profile -->
+<div class="modal-overlay" *ngIf="isEditModalOpen">
+  <div class="modal-content">
+    <h3>แก้ไขข้อมูลโปรไฟล์</h3>
+    <form (ngSubmit)="saveChanges()">
+      <label>ชื่อ</label>
+      <input type="text" [(ngModel)]="editableUser.name" name="name" />
+      <label>อีเมล</label>
+      <input type="email" [(ngModel)]="editableUser.email" name="email" />
+      <label>อัปโหลดรูปใหม่</label>
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+      <img
+        *ngIf="previewImageUrl"
+        [src]="previewImageUrl"
+        class="image-preview"
+        alt="Preview"
+      />
+      <div class="modal-actions">
+        <button type="submit" class="save-btn">บันทึก</button>
+        <button type="button" class="cancel-btn" (click)="closeEditModal()">
+          ยกเลิก
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

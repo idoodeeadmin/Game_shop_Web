@@ -9,10 +9,12 @@
 }
 
 /* หัวข้อ */
-.login-container h2 {
+.login-container h3 {
+  font-family: 'Jura';
+  margin-right: 210px;
   margin-bottom: 20px;
-  font-size: 24px;
-  letter-spacing: 3px;
+  font-size: 40px;
+  letter-spacing: 6px;
 }
 
 /* ช่องกรอก */
@@ -29,8 +31,8 @@
 /* ปุ่ม */
 .login-btn {
   margin-top: 15px;
-  margin-left: 170px;
   padding: 8px 20px;
+  margin-left: 10px;
   border: none;
   border-radius: 20px;
   background: white;
@@ -42,4 +44,28 @@
 
 .login-btn:hover {
   background: #ddd;
+}
+.no-account {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+  color: white; /* สีตัวอักษรหลัก */
+
+  span {
+    color: white;
+  }
+
+  .register-link {
+    color: #9333ea; /* สีม่วงแบบใน Figma */
+    font-weight: bold;
+    margin-left: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .register-link:hover {
+    text-decoration: underline;
+    color: #b855ff; /* สีม่วงอ่อนตอน hover */
+  }
 }
