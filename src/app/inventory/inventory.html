@@ -1,0 +1,42 @@
+<div class="library-container">
+  <h1>คลังเกมของคุณ</h1>
+
+  <!-- Search & Filter -->
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      placeholder="ค้นหาเกม..."
+      class="search-input"
+    />
+    <select [(ngModel)]="filterType" class="filter-select">
+      <option value="">ทั้งหมด</option>
+      <option *ngFor="let type of gameTypes" [value]="type">{{ type }}</option>
+    </select>
+  </div>
+
+  <!-- Games Grid -->
+<div class="games-grid" *ngIf="filteredGames.length > 0; else noGames">
+  <div *ngFor="let game of filteredGames" class="game-card">
+    <div class="image-wrapper">
+      <img
+        [src]="game.image || 'assets/default-game.png'"
+        alt="{{ game.game_name }}"
+        class="game-image"
+      />
+      <div class="overlay">
+        <span class="game-name">{{ game.game_name }}</span>
+        <button class="play-btn" (click)="playGame(game)">เล่น</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- No Games Template -->
+  <ng-template #noGames>
+    <div class="no-result">
+      ไม่พบเกมที่คุณค้นหา
+    </div>
+  </ng-template>
+</div>

@@ -36,6 +36,7 @@ $shadow-strong: 0 18px 30px rgba(0,0,0,0.85);
 
 /* FEATURED GRID (แถบบนสุด) */
 .featured-grid {
+
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 18px;
@@ -44,7 +45,7 @@ $shadow-strong: 0 18px 30px rgba(0,0,0,0.85);
   align-items: end;
   border-radius: 12px;
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));
-  border: 2px solid transparent;
+  border: 2px solid rgb(29, 29, 29);
   position: relative;
   box-shadow: 0 6px 28px rgba(0,0,0,0.7);
   /* outer neon border (dual-color) */
@@ -235,7 +236,7 @@ $shadow-strong: 0 18px 30px rgba(0,0,0,0.85);
 }
 
 .price {
-  color: #ffcc00;
+  color: #ffffff;
   font-weight: bold;
   font-size: 16px;
 }
@@ -260,3 +261,23 @@ $shadow-strong: 0 18px 30px rgba(0,0,0,0.85);
 .buy-btn:hover {
   background: #ffcc00;
 }
+select {
+    padding: 10px 12px;
+    border: 2px solid #272626;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #000000;
+    color: #ffffff;
+    cursor: pointer;
+    transition: border-color 0.3s, background-color 0.3s;
+
+    &:focus {
+      border-color: #ffffff;
+      outline: none;
+      background-color: #000000;
+    }
+
+    option {
+      padding: 5px 10px;
+    }
+  }

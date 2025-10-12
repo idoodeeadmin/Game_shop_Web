@@ -1,0 +1,86 @@
+<div class="dashboard-wrap">
+  <header class="top-header">
+    <h1 class="title">
+      <span class="accent">DashBoard</span>
+      <span class="sub">ผู้ดูแลระบบ</span>
+    </h1>
+  </header>
+
+  <mat-tab-group [(selectedIndex)]="selectedTab">
+    <!-- แท็บจัดการเกม -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span [style.color]="selectedTab === 0 ? '#ff0000' : '#fff'">จัดการเกม</span>
+      </ng-template>
+
+      <section class="table-wrap">
+        <div class="table-header">
+          <div class="col img">รูปภาพ</div>
+          <div class="col name">ชื่อเกม</div>
+          <div class="col price">ราคา</div>
+          <div class="col type">ประเภท</div>
+          <div class="col actions">
+            จัดการ
+            <button class="btn-add-game" (click)="onAddGame()">+</button>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div class="table-body">
+          <div class="row" *ngFor="let game of games">
+            <div class="col img">
+              <img [src]="game.image || 'assets/default-game.png'" alt="{{ game.game_name }}" />
+            </div>
+            <div class="col name">{{ game.game_name }}</div>
+            <div class="col price">{{ game.price | number }}</div>
+            <div class="col type">{{ game.type }}</div>
+            <div class="col actions">
+              <button class="icon edit" (click)="onEditGame(game.id)" title="แก้ไข">✏️</button>
+              <button class="icon del" (click)="onDeleteGame(game.id)" title="ลบ">🗑️</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </mat-tab>
+
+    <!-- แท็บประวัติ wallet statements -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span [style.color]="selectedTab === 1 ? '#ff0000' : '#fff'">ประวัติการทำรายการผู้ใช้</span>
+      </ng-template>
+
+      <section class="table-wrap">
+        <div class="table-header">
+          <div class="col user">User ID</div>
+          <div class="col type">ประเภท</div>
+          <div class="col amount">จำนวนเงิน</div>
+          <div class="col description">คำอธิบาย</div>
+          <div class="col game">เกม</div>
+          <div class="col date">วันที่</div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div class="table-body">
+          <div class="row" *ngFor="let s of statements">
+            <div class="col user">{{ s.user_id }}</div>
+            <div class="col type">{{ s.type }}</div>
+            <div class="col amount">{{ s.amount | number:'1.2-2' }}</div>
+            <div class="col description">{{ s.description }}</div>
+            <div class="col game">{{ s.game_name || '-' }}</div>
+            <div class="col date">{{ s.created_at | date:'short' }}</div>
+          </div>
+        </div>
+      </section>
+    </mat-tab>
+
+    <!-- แท็บจัดการโค้ดส่วนลด -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span [style.color]="selectedTab === 2 ? '#ff0000' : '#fff'">จัดการโค้ดส่วนลด</span>
+      </ng-template>
+      <section class="table-wrap">
+        <p>ส่วนจัดการโค้ดส่วนลด จะเพิ่มฟังก์ชันต่อไป</p>
+      </section>
+    </mat-tab>
+  </mat-tab-group>
+</div>

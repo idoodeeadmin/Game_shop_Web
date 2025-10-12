@@ -1,0 +1,58 @@
+<div class="cart-page-container">
+  <main class="cart-content">
+    <h1 class="page-title">ตะกร้าสินค้าของคุณ</h1>
+
+    <div class="columns-wrapper">
+      <!-- Left Column: Cart Items -->
+      <div class="cart-items-section">
+        <div class="items-header">
+          <h2>รายการเกม ({{ cartItems.length }})</h2>
+        </div>
+
+        <div class="cart-item" *ngFor="let item of cartItems">
+          <img [src]="item.image" [alt]="item.game_name" class="item-thumbnail" />
+
+          <div class="item-details">
+            <h3 class="item-title">{{ item.game_name }}</h3>
+            <p class="item-category">{{ item.type }}</p>
+            <span class="item-price-mobile">฿ {{ item.price }}</span>
+          </div>
+
+          <span class="item-price-desktop">฿ {{ item.price }}</span>
+
+          <button class="remove-item-btn" (click)="removeItem(item.cart_id)" aria-label="Remove item">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Summary -->
+      <div class="summary-section">
+        <div class="summary-box">
+          <h2 class="summary-title">สรุปยอด</h2>
+
+          <div class="summary-row">
+            <span>ยอดรวม</span>
+            <span>฿ {{ total }}</span>
+          </div>
+
+          <div class="discount-code">
+            <label for="discount">โค้ดส่วนลด</label>
+            <input type="text" id="discount" placeholder="กรอกโค้ดส่วนลด..." />
+          </div>
+
+          <hr class="divider" />
+
+<div class="summary-row total">
+  <span>ยอดที่ต้องชำระ</span>
+  <span>฿ {{ total | number:'1.2-2' }}</span>
+</div>
+
+          <button class="checkout-button" (click)="checkout()" [disabled]="cartItems.length === 0">
+  ชำระเงิน
+</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

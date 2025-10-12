@@ -1,9 +1,8 @@
 <div class="profile-page">
-  <!-- Wallet Section -->
   <div class="wallet-section">
     <div class="profile-picture-wrapper">
       <img
-        [src]="user.profile_image ? user.profile_image : 'assets/default-profile.png'"
+        [src]="user.profile_image"
         alt="User Profile"
         class="profile-picture"
       />
@@ -13,13 +12,31 @@
 
     <div class="wallet-balance">
       <p>ยอดเงินใน Wallet</p>
-      <span>{{ user.walletBalance | number: '1.2-2' }}$</span>
+      <span>{{ user.walletBalance | number: '1.2-2' }}฿</span>
     </div>
 
-  
+    <div class="topup-section">
+      <h3 class="topup-title">เติมเงิน</h3>
+
+      <!-- ปุ่มลัดเติมเงิน -->
+<div class="topup-buttons">
+  <button (click)="confirmTopUp(100)">100฿</button>
+  <button (click)="confirmTopUp(200)">200฿</button>
+  <button (click)="confirmTopUp(500)">500฿</button>
+</div>
+
+      <!-- กรอกจำนวนเอง -->
+      <div class="custom-topup">
+        <input
+          type="number"
+          placeholder="หรือกรอกจำนวนเงิน..."
+          [(ngModel)]="customAmount"
+        />
+        <button (click)="topUp(customAmount)">ยืนยันการเติมเงิน</button>
+      </div>
+    </div>
   </div>
 
-  <!-- Transaction History -->
   <div class="transaction-section">
     <h2>ประวัติการทำรายการ</h2>
     <table>
@@ -31,21 +48,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let tx of transactions">
-          <td>{{ tx.date }}</td>
-          <td [ngClass]="{ positive: tx.amount > 0, negative: tx.amount < 0 }">
-            {{ tx.item }}
-          </td>
-          <td [ngClass]="{ positive: tx.amount > 0, negative: tx.amount < 0 }">
-            {{ tx.amount > 0 ? '+' : '' }}{{ tx.amount }}
-          </td>
-        </tr>
+<tr *ngFor="let tx of transactions">
+  <td>{{ tx.date }}</td>
+  <td [ngClass]="{ positive: tx.itemType === 'topup', negative: tx.itemType === 'purchase' }">
+    {{ tx.item }}
+  </td>
+  
+  <td [ngClass]="{ positive: tx.itemType === 'topup', negative: tx.itemType === 'purchase' }">
+    {{ tx.amount | number: '1.2-2' }}฿
+  </td>
+</tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- Modal Edit Profile -->
 <div class="modal-overlay" *ngIf="isEditModalOpen">
   <div class="modal-content">
     <h3>แก้ไขข้อมูลโปรไฟล์</h3>

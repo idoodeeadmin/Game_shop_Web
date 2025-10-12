@@ -16,7 +16,9 @@ export class Login {
   email = '';
   password = '';
   errorMessage = '';
-  apiUrl = 'http://localhost:3000/login';
+
+  // เปลี่ยนเป็น localhost backend
+  apiUrl = 'https://gamewebapi-1.onrender.com/login';
 
   constructor(
     private http: HttpClient,
@@ -29,24 +31,32 @@ export class Login {
       this.errorMessage = 'กรุณากรอกข้อมูลให้ครบ';
       return;
     }
-this.http.post<any>(this.apiUrl, { email: this.email, password: this.password }, { withCredentials: true })
-  .subscribe({
-    next: res => {
-      alert('เข้าสู่ระบบสำเร็จ ');
-      
-      //  ส่ง role ให้ AuthService
-      const userRole: 'user' | 'admin' = res.role || 'user';
-      this.authService.login(userRole);
 
-      this.router.navigate(['/home']);
-    },
-    error: err => {
-      this.errorMessage = err.error?.message || 'เกิดข้อผิดพลาด ';
-    }
-  });
+    this.errorMessage = '';
 
+    this.http.post<any>(
+      this.apiUrl,
+      { email: this.email, password: this.password },
+      { withCredentials: true } // ส่ง cookie session ไปด้วย
+    ).subscribe({
+      next: res => {
+        // เข้าสู่ระบบสำเร็จ
+        const userRole: 'user' | 'admin' = res.role || 'user';
+        const userId: string = res.id?.toString() || '';
+
+        // บันทึก role และ userId ลง AuthService
+        this.authService.login(userRole, userId);
+
+        // ไปหน้า home
+        this.router.navigate(['/home']);
+      },
+      error: err => {
+        this.errorMessage = err.error?.message || 'เกิดข้อผิดพลาด';
+      }
+    });
   }
-    goToRegister() {
+
+  goToRegister() {
     this.router.navigate(['/register']);
   }
 }

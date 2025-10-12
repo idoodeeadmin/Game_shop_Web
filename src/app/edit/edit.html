@@ -1,0 +1,88 @@
+<div class="game-form-container">
+  
+  <button class="dashboard-button" (click)="goToDashboard()">
+    &leftarrow; Dashboard
+  </button>
+
+  <div class="main-layout">
+    
+    <!-- Image Preview Area -->
+    <div class="image-preview-area">
+      <label class="preview-box">
+        <div class="crosshair">
+          <div class="v-line"></div>
+          <div class="h-line"></div>
+        </div>
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <!-- แสดงรูปที่เลือก -->
+        <img *ngIf="previewUrl" [src]="previewUrl" alt="Game Image" class="preview-img">
+
+        <!-- Input file hidden -->
+        <input type="file" (change)="onFileChange($event)" hidden>
+      </label>
+    </div>
+    
+    <form (ngSubmit)="onSubmit()" class="form-area">
+      
+      <div class="input-group">
+        <label>ชื่อเกม</label>
+        <input [(ngModel)]="gameName" name="gameName" type="text">
+        
+        <label class="code-label">ราคา</label>
+        <input [(ngModel)]="code" name="code" type="text" class="code-input">
+      </div>
+      
+      <div class="details-box">
+        <h2 class="section-title">รายละเอียดเกม</h2>
+        
+        <div class="grid-2-cols">
+          <div class="detail-item">
+            <label>วันที่วางขาย:</label>
+            <input [(ngModel)]="releaseDate" name="releaseDate" type="text" class="auto-input" readonly>
+          </div>
+          <div class="detail-item">
+            <label>ผลยอดขาย:</label>
+            <input [(ngModel)]="sales" name="sales" type="text" class="auto-input" readonly>
+          </div>
+        </div>
+
+        <div class="grid-2-cols">
+          <div class="detail-item">
+            <label>อันดับ:</label>
+            <input [(ngModel)]="ranking" name="ranking" type="text" class="auto-input" readonly>
+          </div>
+          
+          <div class="detail-item type-select-wrapper">
+            <label>ประเภท:</label>
+            <div class="type-input-wrapper">
+              <input type="text" placeholder="กรอกประเภทเอง" [(ngModel)]="customType" name="customType" class="custom-type-input">
+              <select [(ngModel)]="type" name="type" class="type-select">
+                <option value="FPS">FPS</option>
+                <option value="RPG">RPG</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Strategy">Strategy</option>
+              </select>
+              <span class="dropdown-arrow">▼</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="description-group">
+        <h2 class="section-title">คำอธิบาย</h2>
+        <textarea [(ngModel)]="description" name="description" rows="4"></textarea>
+      </div>
+
+      <div class="submit-area">
+        <button type="submit" class="submit-button">
+          บันทึกการแก้ไข
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

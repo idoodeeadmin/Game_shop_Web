@@ -13,7 +13,208 @@
 /* Wallet Box */
 .wallet-section {
   background: #0a0912;
-  border: 1px solid #ffffff;
+  border: 1px solid #333; // ปรับสีเส้นขอบให้อ่อนลง
+  border-radius: 15px;
+  padding: 30px;
+  width: 340px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 255, 51, 0.1);
+}
+
+/* Profile Picture */
+.profile-picture-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px; // เพิ่มระยะห่าง
+}
+
+.profile-picture {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 2px solid #000000;
+  box-shadow: 0 0 15px rgba(225, 0, 255, 0.3);
+  object-fit: cover;
+  background-color: #1a1a1a;
+}
+
+/* Wallet Balance */
+.wallet-balance {
+  background: #12111c;
+  border-radius: 8px;
+  padding: 15px 0;
+  border: 1px solid #1a1a1a;
+  margin-bottom: 25px;
+}
+
+.wallet-balance p {
+  margin: 0 0 5px 0;
+  color: #ccc;
+}
+
+.wallet-balance span {
+  color: #00ff66;
+  font-size: 24px; // เพิ่มขนาดฟอนต์ให้เด่นขึ้น
+  font-weight: 700;
+}
+
+/* Top-Up Section - สไตล์ที่เพิ่มเข้ามาใหม่ */
+.topup-title {
+  text-align: left;
+  margin-bottom: 15px;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.topup-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.topup-buttons button {
+  flex: 1;
+  background: transparent;
+  color: #00ff66;
+  border: 1px solid #00ff66;
+  border-radius: 8px;
+  padding: 8px 0;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.topup-buttons button:hover {
+  background: #00ff66;
+  color: #000;
+}
+
+.custom-topup {
+  display: flex;
+  gap: 10px;
+}
+
+.custom-topup input {
+  flex: 1;
+  background: #1f1f1f;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 8px 12px;
+  outline: none;
+  color: white;
+  font-family: "Prompt", sans-serif;
+}
+
+.custom-topup input::placeholder {
+  color: #888;
+}
+
+.custom-topup button {
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease-in-out;
+  font-family: "Prompt", sans-serif;
+  white-space: nowrap;
+}
+
+.custom-topup button:hover {
+  background: #00ff66;
+  color: #000;
+}
+
+/* Transaction History */
+.transaction-section {
+  background: #0a0912;
+  border: 1px solid #333; // ปรับสีเส้นขอบ
+  border-radius: 15px;
+  width: 550px;
+  padding: 25px;
+}
+
+.transaction-section h2 {
+  text-align: left; // จัดชิดซ้ายเหมือนในรูป
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left; // จัดข้อความในตารางชิดซ้าย
+}
+
+th {
+  background: #14121f;
+  padding: 12px 10px;
+  color: #aaa; // ปรับสี Header ให้อ่อนลง
+  border-bottom: 1px solid #222;
+  font-weight: 500;
+}
+
+th:last-child,
+td:last-child {
+  text-align: right; // จัดคอลัมน์จำนวนเงินชิดขวา
+}
+
+td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #222;
+}
+
+.positive {
+  color: #00ff66;
+}
+
+.negative {
+  color: #ff3333;
+}
+
+/* Modal Styles (ไม่มีการเปลี่ยนแปลง) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #12111c;
+  border-radius: 12px;
+  padding: 25px;
+  width: 380px;
+  color: white;
+  text-align: left;
+}
+.profile-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #000;
+  min-height: 100vh;
+  padding-top: 60px;
+  gap: 50px;
+  color: white;
+  font-family: "Prompt", sans-serif;
+}
+
+/* Wallet Box */
+.wallet-section {
+  background: #0a0912;
+  border: 1px solid #333;
   border-radius: 15px;
   padding: 30px;
   width: 340px;
@@ -39,7 +240,7 @@
   background-color: #1a1a1a;
 }
 
-/* Edit Button */
+/* Edit Button - สไตล์สำหรับปุ่มที่นำกลับมา */
 .edit-btn {
   background: #fff;
   color: #000;
@@ -50,12 +251,14 @@
   cursor: pointer;
   margin-bottom: 20px;
   transition: all 0.2s;
+  font-family: "Prompt", sans-serif;
 }
 
 .edit-btn:hover {
   background: #00ff66;
   color: #000;
 }
+
 
 /* Wallet Balance */
 .wallet-balance {
@@ -66,36 +269,42 @@
   margin-bottom: 25px;
 }
 
+.wallet-balance p {
+  margin: 0 0 5px 0;
+  color: #ccc;
+}
+
 .wallet-balance span {
   color: #00ff66;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
 }
 
 /* Top-Up Section */
 .topup-title {
   text-align: left;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   font-weight: 500;
+  font-size: 1.1rem;
 }
 
 .topup-buttons {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  gap: 10px;
 }
 
 .topup-buttons button {
   flex: 1;
-  margin: 0 4px;
   background: transparent;
   color: #00ff66;
   border: 1px solid #00ff66;
-  border-radius: 6px;
-  padding: 6px 0;
+  border-radius: 8px;
+  padding: 8px 0;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease-in-out;
 }
 
 .topup-buttons button:hover {
@@ -105,26 +314,35 @@
 
 .custom-topup {
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
 .custom-topup input {
   flex: 1;
-  border: none;
-  border-radius: 6px;
-  padding: 6px;
+  background: #1f1f1f;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 8px 12px;
   outline: none;
+  color: white;
+  font-family: "Prompt", sans-serif;
+}
+
+.custom-topup input::placeholder {
+  color: #888;
 }
 
 .custom-topup button {
   background: white;
   color: black;
   border: none;
-  border-radius: 6px;
-  padding: 6px 10px;
+  border-radius: 8px;
+  padding: 8px 15px;
   cursor: pointer;
   font-weight: 600;
-  transition: 0.2s;
+  transition: 0.2s ease-in-out;
+  font-family: "Prompt", sans-serif;
+  white-space: nowrap;
 }
 
 .custom-topup button:hover {
@@ -135,32 +353,40 @@
 /* Transaction History */
 .transaction-section {
   background: #0a0912;
-  border: 1px solid #ffffff;
+  border: 1px solid #333;
   border-radius: 15px;
   width: 550px;
   padding: 25px;
-  text-align: center;
 }
 
 .transaction-section h2 {
-  margin-bottom: 15px;
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 20px;
   font-weight: 600;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+  text-align: left;
 }
 
 th {
   background: #14121f;
-  padding: 10px;
-  color: white;
+  padding: 12px 10px;
+  color: #aaa;
   border-bottom: 1px solid #222;
+  font-weight: 500;
+}
+
+th:last-child,
+td:last-child {
+  text-align: right;
 }
 
 td {
-  padding: 10px;
+  padding: 12px 10px;
   border-bottom: 1px solid #222;
 }
 
@@ -172,52 +398,4 @@ td {
   color: #ff3333;
 }
 
-/* Modal */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.modal-content {
-  background: #12111c;
-  border-radius: 12px;
-  padding: 20px;
-  width: 350px;
-  color: white;
-  text-align: left;
-}
-
-.image-preview {
-  width: 100%;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-.modal-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-}
-
-.save-btn {
-  background: #00ff66;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-.cancel-btn {
-  background: #ff3333;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 5px;
-  font-weight: bold;
-}

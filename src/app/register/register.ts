@@ -15,7 +15,8 @@ export class RegisterComponent implements OnInit {
   previewUrl: string | ArrayBuffer | null = null;
   registerForm!: FormGroup;
   selectedFile: File | null = null;
-  apiUrl = 'http://localhost:3000/register';
+  // เปลี่ยนเป็น localhost backend
+  apiUrl = 'https://gamewebapi-1.onrender.com/register';
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {}
 
@@ -30,18 +31,19 @@ export class RegisterComponent implements OnInit {
 
   passwordMatchValidator(form: FormGroup) {
     return form.get('password')?.value === form.get('confirmPassword')?.value
-      ? null : { passwordMismatch: true };
+      ? null
+      : { passwordMismatch: true };
   }
 
-onFileChange(event: any) {
-  const file = event.target.files[0];
-  if (file) {
-    this.selectedFile = file; //  ต้องมีบรรทัดนี้ bro !!!
-    const reader = new FileReader();
-    reader.onload = e => this.previewUrl = reader.result;
-    reader.readAsDataURL(file);
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file; 
+      const reader = new FileReader();
+      reader.onload = e => this.previewUrl = reader.result;
+      reader.readAsDataURL(file);
+    }
   }
-}
 
   onSubmit(): void {
     if (this.registerForm.invalid) {
@@ -59,16 +61,17 @@ onFileChange(event: any) {
       formData.append('profile_image', this.selectedFile);
     }
 
-    this.http.post(this.apiUrl, formData, { withCredentials: true })
+    this.http.post(this.apiUrl, formData, { withCredentials: true }) // ส่ง cookie
       .subscribe({
         next: () => {
-          alert('สมัครสมาชิกเรียบร้อยแล้ว ');
+          alert('สมัครสมาชิกเรียบร้อยแล้ว');
           this.registerForm.reset();
           this.selectedFile = null;
+          this.previewUrl = null;
           this.router.navigate(['/login']);
         },
         error: (err) => {
-          alert(err.error?.message || 'เกิดข้อผิดพลาด ');
+          alert(err.error?.message || 'เกิดข้อผิดพลาด');
         }
       });
   }

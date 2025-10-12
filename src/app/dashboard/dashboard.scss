@@ -1,0 +1,229 @@
+.dashboard-wrap {
+  background: #000;
+  min-height: 100vh;
+  padding: 30px;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Header */
+.top-header {
+  margin-bottom: 20px;
+  .title {
+    font-size: 20px;
+    font-weight: 700;
+    .accent {
+      color: #ff0000;
+      margin-right: 8px;
+    }
+    .sub {
+      color: #ffffff;
+    }
+  }
+}
+.label-manage-games
+{
+  color: #ff0000 ;
+}
+/* component CSS */
+::ng-deep .mat-tab-label.active-tab {
+  color: #ff0000 !important;      /* สี active */
+  font-weight: 700 !important;
+}
+
+::ng-deep .mat-tab-label {
+  color: #fff !important;         /* สี tab ไม่ active */
+  opacity: 1 !important;
+}
+
+::ng-deep .mat-tab-label {
+  color: #fff !important;       /* สี tab ที่ไม่ active */
+  opacity: 1 !important;        /* ไม่จาง */
+}
+
+::ng-deep .mat-tab-label.mat-tab-label-active {
+  color: #ff0000 !important;    /* สี tab active */
+  font-weight: 700;             /* ตัวหนา */
+}
+::ng-deep .my-dark-tabs .mat-tab-label {
+  color: #fff !important;       /* สี tab ไม่ active */
+  opacity: 1 !important;        /* ไม่จาง */
+}
+
+::ng-deep .my-dark-tabs .mat-tab-label.mat-tab-label-active {
+  color: #ff0000 !important;    /* สี active ตาม accent */
+  font-weight: 700 !important;  /* ตัวหนา */
+}
+
+/* Optional: underline ของ active tab ให้ชัด */
+::ng-deep .my-dark-tabs .mat-ink-bar {
+  background-color: #ff0000 !important;
+}
+
+/* Table zone */
+.table-wrap {
+  background: #0a0a0a;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #3a3a3a;
+  margin-top: 20px;
+}
+
+.table-header {
+  height: 45px;
+  display: grid;
+  grid-template-columns: 130px 1fr 120px 120px 160px;
+  padding: 12px 20px;
+  background: #181828;
+font-size: 20px;
+  font-weight: 600;
+  color: #d1d1d1;
+  align-items: center;
+}
+
+.table-body .row {
+  display: grid;
+  grid-template-columns: 130px 1fr 120px 120px 160px;
+  align-items: center;
+  padding: 14px 20px;
+  border-top: 1px solid #2b2b2b;
+}
+.table-body .row:hover {
+  background: #151515;
+}
+
+/* Column cells */
+.col {
+&.name {
+    margin-left: 100px;
+    gap: 10px;
+}
+  &.img img {
+    width: 180px;
+    height: 90px;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+  &.price
+  {
+    margin-left: -50px;
+  }
+  &.actions {
+    margin-left: -50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    
+  }
+  &.type{
+    margin-left: -50px;
+  }
+}
+
+/* Button styles */
+.btn-add-game {
+  margin-left: 50px;
+  width: 100px;
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+
+  cursor: pointer;
+  font-size: 30px;
+}
+.btn-add-game:hover {
+  background: #15803d;
+}
+
+/* Icons */
+.icon {
+  font-size: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.icon.edit {
+  color: #facc15;
+}
+.icon.del {
+  color: #ef4444;
+}
+
+/* Placeholder (other tabs) */
+.placeholder {
+  padding: 60px;
+  text-align: center;
+  font-size: 18px;
+  color: #aaa;
+}
+.dashboard-wrap {
+  padding: 2rem;
+  background-color: #000;
+  color: white;
+  min-height: 100vh;
+
+  .top-header {
+    margin-bottom: 20px;
+    .title {
+      display: flex;
+      gap: 10px;
+      font-size: 1.5rem;
+      .accent { color: #ff0000; font-weight: bold; }
+      .sub { color: #aaa; font-size: 1rem; }
+    }
+  }
+
+  .table-wrap {
+    margin-top: 10px;
+
+    .table-header, .row {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      gap: 10px;
+    }
+
+    .table-header {
+      font-weight: bold;
+      border-bottom: 1px solid #444;
+    }
+
+    .row {
+      border-bottom: 1px solid #222;
+    }
+
+    .col {
+      flex: 1;
+      text-align: left;
+    }
+
+    .col.amount {
+      text-align: right;
+    }
+
+    .col.date {
+      flex: 1.5;
+    }
+
+    .btn-add {
+      background-color: #ff0000;
+      border: none;
+      color: white;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+
+    .icon {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-left: 5px;
+    }
+  }
+}

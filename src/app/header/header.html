@@ -1,5 +1,5 @@
 <div class="navbar">
-  <!-- 🔹 โลโก้ -->
+  <!-- โลโก้ -->
   <div class="logo">
     <img src="../../assets/logogo.png" alt="logo" />
     <div class="logo-text">
@@ -8,47 +8,38 @@
     </div>
   </div>
 
-  <!-- 🔹 เมนูตรงกลาง (เฉพาะตอนล็อกอินแล้ว) -->
+  <!-- เมนูกลาง -->
   <div class="menu-center" *ngIf="isLoggedIn">
-    <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="btn-nav">
-      <img src="../../assets/shop.svg" alt="Shop" />
-      ร้านค้า
+    <a routerLink="/home" routerLinkActive="active" class="btn-nav">
+      <img src="../../assets/shop.svg" alt="Shop" /> ร้านค้า
     </a>
-
     <a routerLink="/inventory" routerLinkActive="active" class="btn-nav">
-      <img src="../../assets/inven.svg" alt="Inventory" />
-      คลังเกม
+      <img src="../../assets/inven.svg" alt="Inventory" /> คลังเกม
     </a>
-
     <a routerLink="/cart" routerLinkActive="active" class="btn-nav">
-      <img src="../../assets/ตะกร้า.svg" alt="Cart" />
-      ตะกร้า
+      <img src="../../assets/ตะกร้า.svg" alt="Cart" /> ตะกร้า
     </a>
-
     <a routerLink="/profile" routerLinkActive="active" class="btn-nav">
-      <img src="../../assets/profile.svg" alt="Profile" />
-      โปรไฟล์
+      <img src="../../assets/profile.svg" alt="Profile" /> โปรไฟล์
     </a>
-
-    <a *ngIf="role === 'admin'" routerLink="/dashboard" routerLinkActive="active" class="btn-nav" style="color: red;">
+    <a *ngIf="role==='admin'" routerLink="/dashboard" routerLinkActive="active" class="btn-nav" style="color:red;">
       Dashboard
     </a>
   </div>
 
-  <!-- 🔹 ด้านขวา: กระเป๋าเงิน + ออกจากระบบ -->
-  <div class="menu-right" *ngIf="isLoggedIn">
-    <div class="wallet-box">
-      <img src="../../assets/wallet.svg" alt="Wallet" />
-      <span>0 ฿</span>
-    </div>
-
-    <button class="btn-logout" (click)="authService.logout()">
-      <img src="../../assets/logout.svg" alt="logout" />
-      ออกจากระบบ
-    </button>
+  <!-- Wallet + Logout -->
+<div class="menu-right" *ngIf="isLoggedIn">
+  <div class="wallet-box">
+    <img src="../../assets/wallet.svg" alt="Wallet" />
+    <span>{{ user.walletBalance || 0 | number:'1.2-2' }} ฿</span>
   </div>
 
-  <!-- 🔹 เมนูตอนยังไม่ล็อกอิน -->
+  <button class="btn-logout" (click)="logout()">
+    <img src="../../assets/logout.svg" alt="logout" /> ออกจากระบบ
+  </button>
+</div>
+
+  <!-- ยังไม่ล็อกอิน -->
   <div class="menu-right" *ngIf="!isLoggedIn">
     <a class="regis" routerLink="/register">สมัครสมาชิก</a>
     <button class="btn-login" routerLink="/login">เข้าสู่ระบบ</button>
